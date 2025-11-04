@@ -15,4 +15,5 @@ YMMV, as the saying goes.
 
 ## Experiments
 
+ - [The Software Development Lifecycle (SDLC)](./sdlc-processes-documents-phase/README.md)
  - [An Information Architecture for Software Development](./software-development-information-architecture/README.md)
