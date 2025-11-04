@@ -633,27 +633,538 @@ Researchers following this protocol should achieve comparable findings, with var
 
 ## APPENDICES
 
-### A. Search String Library
-[Detailed search strings for each database]
+### Appendix A: Search String Library
 
-### B. Coding Dictionaries
-[Complete coding schemes with examples]
+#### A.1 Formal Standards Searches
+```
+Database: IEEE Xplore
+("ISO/IEC/IEEE 12207" OR "software life cycle") AND (processes OR documentation)
+("ISO/IEC/IEEE 29148" OR "requirements engineering") AND (specification OR elicitation)
+("architecture decision" OR "design rationale") AND software
+("verification" OR "validation") AND (documentation OR artifacts)
 
-### C. Extraction Templates
-[Forms for data extraction]
+Database: ISO Standards Repository
+12207:2017 software processes
+15288:2015 system processes
+29148:2018 requirements
+42010:2011 architecture
 
-### D. Quality Assessment Tools
-[Rubrics and checklists]
+Database: Google Scholar
+"software documentation" AND "empirical study" AND (quality OR effectiveness)
+"requirements engineering" AND "project failure" AND empirical
+"tacit knowledge" AND "software development" AND (transfer OR sharing)
+"cognitive bias" AND (programming OR "software engineering")
+"Conway's Law" AND (architecture OR organization) AND empirical
+```
 
-### E. Expert Source List
-[Comprehensive list with URLs]
+#### A.2 Theoretical Foundations Searches
+```
+Primary Terms:
+("Programming as Theory Building" OR "Naur") AND software
+("tacit knowledge" OR "implicit knowledge") AND (software OR programming)
+"Conway's Law" AND (architecture OR organisation OR organization)
+("cognitive bias" OR "systematic bias") AND (developer OR programmer)
+("mental model" OR "shared understanding") AND software
+("knowledge management" OR "knowledge transfer") AND development
+("transactive memory" OR "team knowledge") AND software
+"documentation debt" OR "documentation technical debt"
+"self-admitted technical debt" OR SATD
 
-### F. Repository Examples
-[Specific files and patterns to examine]
+Combined Searches:
+("software project failure" OR "project success") AND (documentation OR requirements)
+("information loss" OR "knowledge loss") AND "software development"
+("organizational structure" OR "team structure") AND "system architecture"
+"Architecture Decision Record" OR ADR OR "design rationale"
+```
+
+#### A.3 Empirical Studies Searches
+```
+Industry Reports:
+site:standishgroup.com CHAOS report
+site:mckinsey.com "software project" failure
+site:gartner.com "IT project" success rate
+site:pmi.org "pulse of profession" software
+
+Academic Empirical:
+"systematic mapping study" AND "software engineering"
+"empirical study" AND "software documentation"
+"case study" AND "requirements engineering" 
+"field study" AND "cognitive bias" AND software
+meta-analysis AND "software project" AND (success OR failure)
+```
+
+### Appendix B: Coding Dictionaries
+
+#### B.1 Theory and Mental Model Codes
+```
+T1: Explicit Theory Building
+- Direct reference to Naur or "theory building"
+- Mentions of "mental model" or "conceptual model"
+- Discussion of "understanding" vs "knowing"
+Example: "Developers build a theory of how the system works"
+
+T2: Implicit Mental Models
+- References to "how developers think about" the system
+- Mentions of "system understanding"
+- Implicit knowledge descriptions
+Example: "The team just knows how it works"
+
+T3: Knowledge Transfer
+- Onboarding discussions
+- Mentoring or pairing references
+- Documentation for future developers
+Example: "We pair new developers with seniors"
+
+T4: Theory Loss
+- Departure of key personnel
+- Loss of system understanding
+- "Bus factor" discussions
+Example: "When John left, nobody understood the payment system"
+
+T5: Theory Reconstruction
+- Reverse engineering efforts
+- Archaeological debugging
+- Legacy system understanding
+Example: "We had to figure out how the old system worked"
+```
+
+#### B.2 Cognitive Bias Codes
+```
+CB1: Preconception Bias
+Keywords: assumed, expected, obvious, clearly
+Example: "We assumed users would understand"
+
+CB2: Ownership Bias
+Keywords: my code, their code, not mine
+Example: "My code doesn't need documentation"
+
+CB3: Fixation Bias
+Keywords: original design, initial approach, always done
+Example: "We stuck with the original design"
+
+CB4: Resort to Default
+Keywords: standard, usual, template, boilerplate
+Example: "We used the standard template"
+
+CB5: Optimism Bias
+Keywords: should work, probably fine, unlikely to fail
+Example: "The code should be self-explanatory"
+
+CB6: Convenience Bias
+Keywords: quick fix, temporary, for now, technical debt
+Example: "This is just a temporary workaround"
+
+CB7: Subconscious Action
+Keywords: copied, found online, Stack Overflow
+Example: "I found this solution on Stack Overflow"
+
+CB8: Blissful Ignorance
+Keywords: seems to work, haven't seen problems, probably okay
+Example: "It seems to work fine in testing"
+
+CB9: Superficial Selection
+Keywords: looks good, seems right, good enough
+Example: "This looks like it'll work"
+
+CB10: Memory Bias
+Keywords: recently, last time, remember when
+Example: "Last time we did it this way"
+```
+
+#### B.3 Documentation Gap Codes
+```
+DG1: Requirements Context
+- Missing WHY behind requirements
+- Stakeholder rationale absent
+- Business context not captured
+
+DG2: Design Rationale
+- Alternatives not documented
+- Trade-offs not explained
+- Decisions without justification
+
+DG3: Implementation Knowledge
+- Code without comments
+- Complex logic unexplained
+- Assumptions not stated
+
+DG4: Operational Wisdom
+- Deployment steps missing
+- Monitoring not documented
+- Troubleshooting absent
+
+DG5: Historical Context
+- Evolution not tracked
+- Changes without explanation
+- Legacy decisions forgotten
+```
+
+### Appendix C: Extraction Templates
+
+#### C.1 Study Data Extraction Form
+```yaml
+study_id: [Author_Year_Title]
+citation: [Full citation]
+source_type: [Academic/Industry/Grey Literature]
+  
+methodology:
+  design: [Case Study/Survey/Experiment/Review]
+  sample_size: [n=X]
+  context: [Industry/Domain/Geography]
+  duration: [Time period]
+  
+findings:
+  failure_rate: [%]
+  success_factors: [List]
+  failure_causes: [List]
+  documentation_impact: [Description + %]
+  
+knowledge_gaps:
+  formal: [What documentation was missing]
+  tacit: [What knowledge was implicit]
+  emergent: [What arose from context]
+  
+quality_assessment:
+  score: [1-10]
+  strengths: [List]
+  limitations: [List]
+  confidence: [High/Medium/Low]
+  
+relevant_quotes:
+  - quote: [Text]
+    page: [Number]
+    context: [Explanation]
+```
+
+#### C.2 Expert Discourse Extraction Form
+```yaml
+expert_name: [Name]
+source: [Blog/Talk/Article]
+date: [Publication date]
+url: [Web address]
+
+key_insights:
+  theory_building: [References to mental models]
+  documentation: [Views on documentation]
+  knowledge_transfer: [Approaches mentioned]
+  biases: [Cognitive biases discussed]
+  
+practical_advice:
+  practices_recommended: [List]
+  practices_discouraged: [List]
+  tools_mentioned: [List]
+  
+assumptions_identified:
+  explicit: [Stated assumptions]
+  implicit: [Unstated beliefs detected]
+  
+gaps_acknowledged:
+  - gap: [Description]
+    impact: [Consequences mentioned]
+    mitigation: [Solutions proposed]
+```
+
+#### C.3 Post-Mortem Analysis Template
+```yaml
+incident: [Name/Company]
+date: [When occurred]
+cost: [Financial/human impact]
+source: [Report URL/citation]
+
+failure_pattern:
+  category: [Requirements/Design/Implementation/etc]
+  root_cause: [Primary cause]
+  contributing_factors: [List]
+  
+documentation_gaps:
+  missing: [What wasn't documented]
+  outdated: [What was wrong]
+  ignored: [What was documented but not followed]
+  
+knowledge_issues:
+  tacit_knowledge_lost: [What wasn't transferred]
+  assumptions_made: [Unstated beliefs]
+  biases_present: [Cognitive biases identified]
+  
+lessons:
+  technical: [Technical learnings]
+  process: [Process improvements]
+  organizational: [Organizational changes]
+  
+prevention:
+  could_have_helped: [What would have prevented]
+  recommendations: [Specific actions]
+```
+
+### Appendix D: Quality Assessment Tools
+
+#### D.1 Study Quality Rubric
+```
+Scoring Guide (10 point scale):
+
+Methodology (3 points):
+□ Clear research questions (1 point)
+□ Appropriate method for questions (1 point)
+□ Rigorous execution described (1 point)
+
+Sample (3 points):
+□ Sample size >500 or longitudinal (2 points)
+□ Sample size 50-500 (1 point)
+□ Representative sample (1 point)
+
+Analysis (2 points):
+□ Appropriate statistical/qualitative analysis (1 point)
+□ Clear presentation of results (1 point)
+
+Validity (2 points):
+□ Limitations acknowledged (1 point)
+□ Threats to validity addressed (1 point)
+
+Classification:
+8-10: High Quality (strong confidence)
+5-7: Medium Quality (moderate confidence)
+2-4: Low Quality (supporting only)
+```
+
+#### D.2 Documentation Quality Checklist
+```
+Coverage Assessment:
+□ Requirements documented
+□ Architecture documented
+□ Design rationale captured
+□ Implementation documented
+□ Test coverage documented
+□ Deployment procedures exist
+□ Operational runbooks present
+□ Maintenance guides available
+
+Quality Criteria:
+□ Up-to-date (< 30 days old)
+□ Accurate (verified against code)
+□ Complete (all sections filled)
+□ Clear (readability score >60)
+□ Accessible (easy to find)
+□ Useful (actually used by team)
+□ Maintained (regular updates)
+```
+
+#### D.3 Bias Detection Checklist
+```
+For Research Papers:
+□ Publication bias considered
+□ Confirmation bias in interpretation
+□ Selection bias in sampling
+□ Survivorship bias in cases
+
+For Expert Discourse:
+□ Authority bias (accepting without evidence)
+□ Recency bias (overweighting recent events)
+□ Availability bias (memorable over representative)
+□ Hindsight bias (knew it all along)
+
+For Case Studies:
+□ Outcome bias (judging by results only)
+□ Attribution bias (cause assignment)
+□ Narrative bias (fitting stories)
+□ Cherry-picking (selective examples)
+```
+
+### Appendix E: Expert Source List
+
+#### E.1 Individual Thought Leaders
+```
+Software Architecture:
+- Martin Fowler: https://martinfowler.com
+  Topics: Architecture, Refactoring, Patterns
+  Key Articles: "Is Design Dead?", "Architecture Decision Records"
+  
+- Simon Brown: https://simonbrown.je
+  Topics: C4 Model, Architecture Documentation
+  Resources: Software Architecture for Developers
+
+- Grady Booch: https://handbook.booch.com
+  Topics: Architecture, Design, UML
+  Notable: Architecture handbook online
+
+Engineering Practices:
+- Kent Beck: https://www.kentbeck.com
+  Topics: XP, TDD, Patterns
+  Key Work: "Extreme Programming Explained"
+
+- Michael Feathers: https://michaelfeathers.com
+  Topics: Legacy Code, Theory Building
+  Key Work: "Working Effectively with Legacy Code"
+
+- Jessica Kerr: https://jessitron.com
+  Topics: Sociotechnical Systems, Symmathesy
+  Notable: Systems thinking in software
+
+DevOps and Operations:
+- Charity Majors: https://charity.wtf
+  Topics: Observability, Operations, Testing in Production
+  
+- Gene Kim: https://itrevolution.com
+  Topics: DevOps, Phoenix Project
+  Resources: DevOps Research
+
+- Nicole Forsgren: https://nicolefv.com
+  Topics: DORA metrics, DevOps research
+  Key Work: "Accelerate"
+
+Cognitive Science & Teams:
+- Chelsea Troy: https://chelseatroy.com
+  Topics: Technical Debt, Maintenance, Team Dynamics
+  
+- Dan Luu: https://danluu.com
+  Topics: Postmortems, Performance, Failure Analysis
+  Notable: Extensive postmortem collection
+
+- Hillel Wayne: https://www.hillelwayne.com
+  Topics: Formal Methods, Empirical Software Engineering
+```
+
+#### E.2 Organizational Blogs
+```
+Engineering Excellence:
+- Stripe Engineering: https://stripe.com/blog/engineering
+- Netflix Tech Blog: https://netflixtechblog.com
+- Uber Engineering: https://eng.uber.com
+- Airbnb Engineering: https://medium.com/airbnb-engineering
+- Spotify Engineering: https://engineering.atspotify.com
+
+Documentation Culture:
+- GitLab Handbook: https://about.gitlab.com/handbook
+- Thoughtworks Tech Radar: https://www.thoughtworks.com/radar
+- Google Engineering: https://developers.googleblog.com
+
+Incident Analysis:
+- Google SRE: https://sre.google/sre-book
+- AWS Post-Event Summaries: https://aws.amazon.com/message
+- Cloudflare Blog: https://blog.cloudflare.com (incident tag)
+- GitHub Engineering: https://github.blog/category/engineering
+```
+
+#### E.3 Research Organizations
+```
+Industry Research:
+- Standish Group: https://www.standishgroup.com
+- McKinsey Digital: https://www.mckinsey.com/capabilities/mckinsey-digital
+- Gartner Research: https://www.gartner.com
+- PMI: https://www.pmi.org
+- DORA: https://www.devops-research.com
+
+Academic:
+- IEEE Software: https://www.computer.org/csdl/magazine/sw
+- ACM Queue: https://queue.acm.org
+- Empirical Software Engineering journal
+- Information and Software Technology journal
+```
+
+### Appendix F: Repository Examples
+
+#### F.1 High-Quality Documentation Examples
+```yaml
+kubernetes/kubernetes:
+  examine:
+    - /docs/design-proposals/* (design decisions)
+    - /docs/devel/* (development documentation)
+    - /CHANGELOG/* (evolution tracking)
+  patterns:
+    - KEPs (Kubernetes Enhancement Proposals)
+    - SIG documentation structure
+    - API documentation generation
+
+rust-lang/rfcs:
+  examine:
+    - /text/* (accepted RFCs)
+    - Template structure
+    - Decision process documentation
+  patterns:
+    - RFC process for decisions
+    - Community input integration
+    - Rationale documentation
+
+python/peps:
+  examine:
+    - PEP structure and categories
+    - Status workflow
+    - Historical decisions
+  patterns:
+    - Standardized proposal format
+    - Clear decision criteria
+    - Implementation tracking
+```
+
+#### F.2 Architecture Decision Records
+```yaml
+adr/adr:
+  location: https://github.com/adr/adr
+  examine:
+    - Template variations
+    - Tool ecosystem
+    - Example implementations
+
+golang/go:
+  examine:
+    - /doc/go1.*.html (decision history)
+    - Proposal process
+    - Design documents
+  patterns:
+    - Proposal-driven development
+    - Community review process
+    - Compatibility promises
+
+aws/aws-cdk:
+  examine:
+    - /design/* (design documents)
+    - RFC process
+    - Decision records
+  patterns:
+    - RFC-driven development
+    - API design decisions
+    - Breaking change management
+```
+
+#### F.3 Documentation Anti-Patterns
+```
+Search GitHub for:
+- "TODO" OR "FIXME" (technical debt)
+- "temporary" OR "hack" (shortcuts)
+- "don't know" OR "not sure" (uncertainty)
+- "legacy" OR "deprecated" (old code)
+- "DO NOT TOUCH" (fragile code)
+
+Common Anti-Pattern Locations:
+- README files with "Coming soon"
+- Docs folders with .gitkeep only
+- Comments like "Ask Bob" (person dependency)
+- Version 0.0.1 for years
+- Last updated timestamps >2 years
+```
+
+#### F.4 Post-Mortem Collections
+```yaml
+Public Collections:
+- danluu/post-mortems: 
+  URL: https://github.com/danluu/post-mortems
+  Content: Curated list of public postmortems
+
+- hjacobs/kubernetes-failure-stories:
+  URL: https://github.com/hjacobs/kubernetes-failure-stories
+  Content: Kubernetes-specific failures
+
+Example Structure to Extract:
+- Timeline of events
+- Root cause identification
+- Contributing factors
+- Mitigation steps
+- Lessons learned
+- Action items
+```
 
 ---
 
-END OF PROTOCOL
+END OF PROTOCOL WITH COMPLETE APPENDICES
 
-Document Status: Ready for Review
-Next Step: Review protocol, then execute Phase 1
+Document Status: Complete with All Appendices
+Next Step: Execute Phase 1 using these resources
