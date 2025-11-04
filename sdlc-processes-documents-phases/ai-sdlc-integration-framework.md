@@ -422,8 +422,3 @@ The ROI is clear: preventing a single major failure pays for comprehensive AI-as
 - ISO/IEC/IEEE 15289:2019 - Content of life-cycle information items
 - Naur, P. (1985) - Programming as Theory Building
 - Various empirical studies on documentation, cognitive biases, and developer productivity
-
----
-
-*Last Updated: November 2024*
-*Version: 1.0*
