@@ -17,6 +17,7 @@ graph TB
 
 ## 2. Document Type Mapping to Processes
 
+### 2.1 Network View
 ```mermaid
 flowchart LR
     subgraph "Document Types"
@@ -61,6 +62,149 @@ flowchart LR
     
     D5 --> P7
     P7 --> D6
+```
+
+### 2.2 Classic Flowchart View
+```mermaid
+flowchart TD
+    Start([🚀 Project Initiation])
+    Start --> Stakeholder[👥 Stakeholder Input]
+    
+    Stakeholder --> Request[📝 Create Request<br/>Document Type: Requests]
+    
+    Request --> Planning{{"📅 PLANNING PHASE<br/>Human: Vision & Priorities<br/>AI: Estimation & Analysis"}}
+    
+    Planning --> PlanDocs[📊 Generate Plans<br/>📑 Create Specifications<br/>Document Types: Plans, Specs]
+    
+    PlanDocs --> Analysis{{"🔍 ANALYSIS PHASE<br/>Human: Understand Needs<br/>AI: Check Consistency"}}
+    
+    Analysis --> AnalysisDocs[📑 Refine Specifications<br/>📋 Initial Descriptions<br/>Document Types: Specs, Descriptions]
+    
+    AnalysisDocs --> Design{{"🎨 DESIGN PHASE<br/>Human: Architecture Decisions<br/>AI: Generate Documentation"}}
+    
+    Design --> DesignDocs[📋 Architecture Descriptions<br/>📋 Design Documents<br/>Document Type: Descriptions]
+    
+    DesignDocs --> ADR{Create ADRs?}
+    ADR -->|Yes| ADRDoc[📋 Architecture Decision Records<br/>CRITICAL: Captures Rationale]
+    ADR -->|No| Implementation
+    ADRDoc --> Implementation
+    
+    Implementation{{"💻 IMPLEMENTATION<br/>Human: Business Logic<br/>AI: Boilerplate & Tests"}}
+    
+    Implementation --> Code[Source Code<br/>+ Auto-generated Docs]
+    
+    Code --> Testing{{"🧪 TESTING PHASE<br/>Human: Scenarios<br/>AI: Execution & Coverage"}}
+    
+    Testing --> TestDocs[📈 Test Reports<br/>📈 Coverage Reports<br/>Document Type: Reports]
+    
+    TestDocs --> QualityGate{Quality<br/>Gate<br/>Pass?}
+    
+    QualityGate -->|No| Fixes[🔧 Create Fix Requests]
+    Fixes --> Implementation
+    
+    QualityGate -->|Yes| Deployment{{"🚢 DEPLOYMENT<br/>Human: Approval<br/>AI: Automation"}}
+    
+    Deployment --> DeployDocs[🔄 Deployment Procedures<br/>📈 Deployment Reports<br/>Document Types: Procedures, Reports]
+    
+    DeployDocs --> Operations[📡 Operations & Monitoring]
+    
+    Operations --> Maintenance{{"🔧 MAINTENANCE<br/>Human: Root Cause<br/>AI: Issue Detection"}}
+    
+    Maintenance --> MaintenanceDecision{Issue<br/>Type?}
+    
+    MaintenanceDecision -->|Bug| BugRequest[📝 Bug Fix Request]
+    MaintenanceDecision -->|Enhancement| EnhanceRequest[📝 Enhancement Request]
+    MaintenanceDecision -->|Update Docs| DocUpdate[📋 Update All Document Types]
+    
+    BugRequest --> Implementation
+    EnhanceRequest --> Planning
+    DocUpdate --> End([🏁 Documentation Updated])
+    
+    Operations --> End2([🎯 System Operational])
+    
+    style Planning fill:#667eea,color:#fff
+    style Analysis fill:#667eea,color:#fff
+    style Design fill:#667eea,color:#fff
+    style Implementation fill:#667eea,color:#fff
+    style Testing fill:#667eea,color:#fff
+    style Deployment fill:#667eea,color:#fff
+    style Maintenance fill:#667eea,color:#fff
+    
+    style ADRDoc fill:#4CAF50,color:#fff
+    style QualityGate fill:#FF9800,color:#fff
+    style MaintenanceDecision fill:#FF9800,color:#fff
+```
+
+### 2.3 Simplified Document Flow
+```mermaid
+flowchart TD
+    subgraph Input[" 📥 INPUT DOCUMENTS "]
+        I1[Stakeholder Requests]
+        I2[Business Requirements]
+        I3[Constraints & Policies]
+    end
+    
+    subgraph Process[" ⚙️ PROCESS PHASES "]
+        subgraph Planning
+            P1[Define Scope]
+            P2[Estimate Resources]
+            P3[Set Timeline]
+        end
+        
+        subgraph Analysis
+            A1[Analyse Requirements]
+            A2[Validate Feasibility]
+            A3[Define Acceptance]
+        end
+        
+        subgraph Design
+            D1[System Architecture]
+            D2[Component Design]
+            D3[Interface Design]
+        end
+        
+        subgraph Build
+            B1[Implementation]
+            B2[Unit Testing]
+            B3[Integration]
+        end
+    end
+    
+    subgraph Output[" 📤 OUTPUT DOCUMENTS "]
+        O1[Project Plans]
+        O2[Specifications]
+        O3[Design Descriptions]
+        O4[Test Reports]
+        O5[Procedures]
+    end
+    
+    I1 --> P1
+    I2 --> A1
+    I3 --> P2
+    
+    P1 --> O1
+    P2 --> O1
+    P3 --> O1
+    
+    A1 --> O2
+    A2 --> O2
+    A3 --> O2
+    
+    O2 --> D1
+    D1 --> O3
+    D2 --> O3
+    D3 --> O3
+    
+    O3 --> B1
+    B1 --> B2
+    B2 --> O4
+    B3 --> O5
+    
+    subgraph Legend[" 🔑 LEGEND "]
+        L1[🟦 Human-Driven Process]
+        L2[🟩 AI-Assisted Process]
+        L3[➡️ Document Flow]
+    end
 ```
 
 ## 3. Human-AI Contribution by Process
